@@ -36,3 +36,7 @@ GET http://localhost:8081/
 Disable access
 
 ![Nexus access](./images/nexus-access.png "Nexus access")
+
+## Links
+
+- [Official Nexus Docker Link](https://hub.docker.com/r/sonatype/nexus3/)
