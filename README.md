@@ -16,7 +16,6 @@ These ports must be opened:
 
 - 8081: Nexus Portal
 - 5000: Nexus Docker Registry Repository
-- 5100: Nexus Helm Charts Repository
   
 ```
 $ docker run -d -p 8081:8081 --name gsdpi-nexus -e HELM_EXPERIMENTAL_OCI=1 -v nexus-data:/nexus-data sonatype/nexus3
