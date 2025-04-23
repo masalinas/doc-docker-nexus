@@ -30,10 +30,10 @@ $ docker exec consum-nexus cat /nexus-data/admin.password
 
 ## STEP 04: Open Nexus and change default admin password
 
-Sign in as admin with the previous default password and complete the wizard to finalize configuration
+Sign in as admin with the previous default password and complete the wizard to finalize configuration. Open nexus Portal from your browsert
 
 ```
-GET http://localhost:8081/
+http://localhost:8081/
 ```
 
 Set new admin password
