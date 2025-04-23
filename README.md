@@ -110,7 +110,7 @@ The configuration for this role is:
 - Role Id: gsdpi-developer
 - Name: gsdpi-developer
 - Description: GSDPI Developer
-- Priviledges: nx-repository-view-docker-****-****
+- Priviledges: nx-repository-view-docker-*-*
 
 Now we are create a user to access to our docker registry
 
