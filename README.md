@@ -78,7 +78,7 @@ In case npm packages
 - Type: hosted
 - Allow Anonymous: false
 
-Now we must reopen docker with these new port 5000 for docker. So my must destroy nexus and rerun again with this command. The last configuration will not be destroy because is saved in a volume:
+Now we must reopen docker with these new port 5000 for docker. So we must destroy nexus and re-run again with this command. The last configuration will not be destroyed because is saved in a volume:
 
 ```
 $ docker run -d -p 8081:8081 -p 5000:5000 --name gsdpi-nexus -e HELM_EXPERIMENTAL_OCI=1 -v nexus-data:/nexus-data sonatype/nexus3
@@ -86,12 +86,12 @@ $ docker run -d -p 8081:8081 -p 5000:5000 --name gsdpi-nexus -e HELM_EXPERIMENTA
 
 ## STEP 06: exclude your local nexus repository from https docker login
 
-Ny default docker uses https connection to login in docker repositories, so my must exclude out local nexus in docker, editing this file and adding our local dns: <MY_LOCAL_PUBLIC/PRIVATE_IP>.nip.io:5000
+Our default docker CLI uses https connection to login any docker repository, so we must exclude our local nexus service from docker CLI, editing this file **/etc/docker/daemon.json** and adding our local dns: <MY_LOCAL_PUBLIC/PRIVATE_IP>.nip.io:5000 nexus service like this:
 
 ```
 $ sudo nano /etc/docker/daemon.json
 {
-     "insecure-registries" : [ "172.30.0.0/16", "<MY_LOCAL_PUBLIC/PRIVATE_IP>.nip.io:5000" ]
+     "insecure-registries" : [ "172.30.0.0/16", "<MY_LOCAL_PUBLIC_OR_PRIVATE_IP>.nip.io:5000" ]
 }
 ```
 
@@ -131,7 +131,7 @@ Now nexus is running with all repositories created and configured and your local
 
 
 ```
-$ docker login <MY_LOCAL_PUBLIC/PRIVATE_IP>.nip.io:5000 -u <ID_USERNAME>
+$ docker login <MY_LOCAL_PUBLIC_OR_PRIVATE_IP>.nip.io:5000 -u <ID_USERNAME>
 Password:
 WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
 Configure a credential helper to remove this warning. See
@@ -141,11 +141,11 @@ Login Succeeded
 ```
 ## STEP 09: Push docker image
 
-You must build and tag your image using your nexus <MY_LOCAL_PUBLIC/PRIVATE_IP>.nip.io dns address.
+You must build and tag your image using your nexus <MY_LOCAL_PUBLIC_OR_PRIVATE_IP>.nip.io dns address.
 
 ```
-$ docker build -t <MY_LOCAL_PUBLIC/PRIVATE_IP>.nip.io:5000/uniovi-gsdpi-bokeh-epigenomics:0.2 .
-The push refers to repository [<MY_LOCAL_PUBLIC/PRIVATE_IP>.nip.io:5000/uniovi-gsdpi-bokeh-epigenomics]
+$ docker build -t <MY_LOCAL_PUBLIC_OR_PRIVATE_IP>.nip.io:5000/uniovi-gsdpi-bokeh-epigenomics:0.2 .
+The push refers to repository [<MY_LOCAL_PUBLIC_OR_PRIVATE_IP>.nip.io:5000/uniovi-gsdpi-bokeh-epigenomics]
 188257e1a019: Pushed 
 f7cab2190f54: Pushed 
 9a9fb8d93b00: Pushed 
@@ -156,14 +156,14 @@ df7e0efe85e6: Pushed
 ea680fbff095: Pushed 
 0.1: digest: sha256:6e415144441b2adf940b8fcceb461616a000e0ca0bd10b0ffaca0d98281fccd5 size: 1999
 
-$ docker push <MY_LOCAL_PUBLIC/PRIVATE_IP>.nip.io:5000/uniovi-gsdpi-bokeh-epigenomics:0.2
+$ docker push <MY_LOCAL_PUBLIC_OR_PRIVATE_IP>.nip.io:5000/uniovi-gsdpi-bokeh-epigenomics:0.2
 ```
 
 ## STEP 10: Pull docker image
-Don't forget configure your **/etc/docker/daemon.json** file and include your <MY_LOCAL_PUBLIC/PRIVATE_IP>.nip.io:5000 dns to use the protocol http for this repository:
+Don't forget configure your **/etc/docker/daemon.json** file and include your <MY_LOCAL_PUBLIC_OR_PRIVATE_IP>.nip.io:5000 dns to use the protocol http for this repository:
 
 ```
-$ docker pull <MY_LOCAL_PUBLIC/PRIVATE_IP>.nip.io:5000/uniovi-gsdpi-bokeh-epigenomics:0.2
+$ docker pull <MY_LOCAL_PUBLIC_OR_PRIVATE_IP>.nip.io:5000/uniovi-gsdpi-bokeh-epigenomics:0.2
 ```
 
 ## Links
