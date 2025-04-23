@@ -116,7 +116,7 @@ Now we are create a user to access to our docker registry
 
 Go to Nexus configuration -> Users -> add User
 
-![Nexus RUseroles](./images/nexus-role.png "Nexus User")
+![Nexus RUseroles](./images/nexus-user.png "Nexus User")
 
 The configuration for this role is:
 
