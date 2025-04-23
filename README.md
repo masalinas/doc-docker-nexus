@@ -170,4 +170,4 @@ $ docker pull <MY_LOCAL_PUBLIC_OR_PRIVATE_IP>.nip.io:5000/uniovi-gsdpi-bokeh-epi
 
 ## Links
 
-- [Official Nexus Docker Link](https://hub.docker.com/r/sonatype/nexus3/)
+- [Official Nexus Docker Repository](https://hub.docker.com/r/sonatype/nexus3/)
