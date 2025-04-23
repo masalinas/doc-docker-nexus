@@ -116,7 +116,7 @@ Now we are create a user to access to our docker registry
 
 Go to Nexus configuration -> Users -> add User
 
-![Nexus RUseroles](./images/nexus-user.png "Nexus User")
+![Nexus User](./images/nexus-user.png "Nexus User")
 
 The configuration for this role is:
 
@@ -158,6 +158,8 @@ ea680fbff095: Pushed
 
 $ docker push <MY_LOCAL_PUBLIC_OR_PRIVATE_IP>.nip.io:5000/uniovi-gsdpi-bokeh-epigenomics:0.2
 ```
+
+![Nexus Images](./images/nexus-images.png "Nexus Images")
 
 ## STEP 10: Pull docker image
 Don't forget configure your **/etc/docker/daemon.json** file and include your <MY_LOCAL_PUBLIC_OR_PRIVATE_IP>.nip.io:5000 dns to use the protocol http for this repository:
