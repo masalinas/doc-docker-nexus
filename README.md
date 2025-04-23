@@ -248,7 +248,7 @@ Nexus offer a general search view to see the artefactors published and some deta
 
 ![Nexus Search](./images/nexus-search.png "Nexus Search")
 
-Some detail about the artefactor **morphingprojections-portal** version **1.13.0**
+Some detail about the artefactor **morphingprojections-portal** version **1.13.0**, for example who if the user that publish this artefactor and when.
 
 ![Nexus Search Detail](./images/nexus-search-detail.png "Nexus Search Detail")
 
