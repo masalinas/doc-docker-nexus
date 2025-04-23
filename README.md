@@ -11,8 +11,9 @@ $ docker volume create --name nexus-data
 
 ## STEP 02: Execute Nexus Container
 
+Nexus supports OCI-format Helm charts, so Helm CLI v3.7+ is needed and you must enable OCI support
 ```
-$ docker run -d -p 8081:8081 --name consum-nexus -v nexus-data:/nexus-data sonatype/nexus3
+$ docker run -d -p 8081:8081 --name consum-nexus -e HELM_EXPERIMENTAL_OCI=1 -v nexus-data:/nexus-data sonatype/nexus3
 ```
 
 ## STEP 03: Recover default admin password
