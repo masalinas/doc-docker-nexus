@@ -248,6 +248,10 @@ Nexus offer a general search view to see the artefactors published and some deta
 
 ![Nexus Search](./images/nexus-search.png "Nexus Search")
 
+Some detail about the artefactor **morphingprojections-portal** version **1.13.0**
+
+![Nexus Search Detail](./images/nexus-search-detail.png "Nexus Search Detail")
+
 ## Links
 
 - [Official Nexus Docker Repository](https://hub.docker.com/r/sonatype/nexus3/)
