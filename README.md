@@ -181,7 +181,7 @@ First we must add a new priviledge to our role **gsdpi-developer** to hava acces
 ![Nexus Role with npm](./images/nexus-npm-role.png "Nexus Role with npm")
 
 
-Now we must our user in our host using the npm CLI like this:
+Now we must add our user in the host using the npm CLI like this:
 
 ```
 $ npm adduser --auth-type=legacy --registry=http://<MY_LOCAL_PUBLIC_OR_PRIVATE_IP>.nip.io:8081/repository/gsdpi-npm/
@@ -193,7 +193,7 @@ Logged in on http://<MY_LOCAL_PUBLIC_OR_PRIVATE_IP>:8081/repository/gsdpi-npm/.
 
 ## STEP 13: Push the npm package
 
-Inside our npm repository execute this command to publish it:
+Inside our npm repository execute this command to publish the npm package:
 ```
 $ npm publish --registry=http://<MY_LOCAL_PUBLIC_OR_PRIVATE_IP>:8081/repository/gsdpi-npm/
 
