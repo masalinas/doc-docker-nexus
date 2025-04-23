@@ -168,6 +168,37 @@ Don't forget configure your **/etc/docker/daemon.json** file and include your <M
 $ docker pull <MY_LOCAL_PUBLIC_OR_PRIVATE_IP>.nip.io:5000/uniovi-gsdpi-bokeh-epigenomics:0.2
 ```
 
+## STEP 11: Configure nexus npm repository:
+
+Before publish any npm package in nexus npm repository we must make a post configuration to activate a new npm authentication method used by nexus to authenticate the user when publish any package. This authentication is called: **npm Bear Token Realm method** like this:
+
+![Nexus npm authentication method](./images/nexus-npm-configuration.png "Nexus npm authentication method")
+
+## STEP 12: Configure your npm repository:
+
+First we must add a new priviledge to our role **gsdpi-developer** to hava access to the npm repository called **gsdpi-npm**. Go to Configuration -> Roles -> Edit Role **gsdpi-developer** and add this priviledge **nx-repository-view-npm-*-*** like this:
+
+![Nexus Role with npm](./images/nexus-npm-role.png "Nexus Role with npm")
+
+
+Now we must our user in our host using the npm CLI like this:
+
+```
+$ npm adduser --auth-type=legacy --registry=http://<MY_LOCAL_PUBLIC_OR_PRIVATE_IP>.nip.io:8081/repository/gsdpi-npm/
+npm notice Log in on http://<MY_LOCAL_PUBLIC_OR_PRIVATE_IP>:8081/repository/gsdpi-npm/
+Username: masalinas
+Email: (this IS public) masalinas.gancedo@gmail.com
+Logged in on http://<MY_LOCAL_PUBLIC_OR_PRIVATE_IP>:8081/repository/gsdpi-npm/.
+```
+
+## STEP 13: Push the npm package
+
+Inside our npm repository execute this command to publish it:
+```
+$ npm publish --registry=http://<MY_LOCAL_PUBLIC_OR_PRIVATE_IP>:8081/repository/gsdpi-npm/
+
+```
+
 ## Links
 
 - [Official Nexus Docker Repository](https://hub.docker.com/r/sonatype/nexus3/)
