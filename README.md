@@ -242,6 +242,12 @@ NAME                                             	CHART VERSION	APP VERSION	DESC
 gsdpi-helm/uniovi-avib-morphingprojections-portal	1.13.0       	1.13.0     	A Helm chart for uniovi-avib-morphingprojection...
 ```
 
+## STEP 17: Search any artefactory
+
+Nexus offer a general search view to see the artefactors published and some detail about them
+
+![Nexus Search](./images/nexus-search.png "Nexus Search")
+
 ## Links
 
 - [Official Nexus Docker Repository](https://hub.docker.com/r/sonatype/nexus3/)
