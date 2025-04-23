@@ -46,7 +46,7 @@ Nexus portal
 
 ## STEP 05: Create and configure repositories
 
-Now we are create our own repositories for:
+Now we will create our own repositories for:
 
 - Docker Images
 - Kubernetes charts
