@@ -174,7 +174,7 @@ Before publish any npm package in nexus npm repository we must make a post confi
 
 ![Nexus npm authentication method](./images/nexus-npm-configuration.png "Nexus npm authentication method")
 
-## STEP 12: Configure your npm repository:
+## STEP 12: Configure your role and login for npm repository
 
 First we must add a new priviledge to our role **gsdpi-developer** to hava access to the npm repository called **gsdpi-npm**. Go to Configuration -> Roles -> Edit Role **gsdpi-developer** and add this priviledge **nx-repository-view-npm-*-*** like this:
 
@@ -197,7 +197,49 @@ The configuration is saved in **/home/miguel/.npmr**
 Inside our npm repository execute this command to publish the npm package:
 ```
 $ npm publish --registry=http://<MY_LOCAL_PUBLIC_OR_PRIVATE_IP>:8081/repository/gsdpi-npm/
+username:
+password:
+email:
+```
 
+## STEP 14: Configure your role and login for helm repository
+
+First we must add a new priviledge to our role **gsdpi-developer** to hava access to the npm repository called **gsdpi-helm**. Go to Configuration -> Roles -> Edit Role **gsdpi-developer** and add this priviledge **nx-repository-view-helm-*-*** like this:
+
+![Nexus Role with helm](./images/nexus-helm-role.png "Nexus Role with helm")
+
+
+Now we must add our helm repository in the host using the helm CLI like this:
+
+```
+$ helm repo add gsdpi-helm http://<MY_LOCAL_PUBLIC_OR_PRIVATE_IP>:8081/repository/gsdpi-helm/ --username masalinas
+Password: 
+```
+
+## STEP 15: Push the helm chart
+
+Inside our helm repository execute this command to publish the helm chart:
+```
+$ curl -u masalinas --upload-file uniovi-avib-morphingprojections-portal-1.13.0.tgz http://<MY_LOCAL_PUBLIC_OR_PRIVATE_IP>:8081/repository/gsdpi-helm/
+```
+
+**NOTE**: if you want use the CLI to push your charts you must configure nexus to use **https** protocol 
+```
+$ helm push uniovi-avib-morphingprojections-portal-1.13.0.tgz oci://<MY_LOCAL_PUBLIC_OR_PRIVATE_IP>:8081/repository/gsdpi-helm/
+```
+
+## STEP 16: manual reindex your charts locally
+
+You must reindex locally your charts from your nexus repository before list them
+```
+$ helm repo update
+```
+
+Now you cant list them
+```
+$ helm search repo gsdpi-helm
+NAME                                             	CHART VERSION	APP VERSION	DESCRIPTION                                       
+gsdpi-helm/uniovi-avib-morphingprojections-portal	1.13.0       	1.13.0     	A Helm chart for uniovi-avib-morphingprojection...
 ```
 
 ## Links
