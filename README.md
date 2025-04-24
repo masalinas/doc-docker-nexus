@@ -252,6 +252,51 @@ Some detail about the artefactor **morphingprojections-portal** version **1.13.0
 
 ![Nexus Search Detail](./images/nexus-search-detail.png "Nexus Search Detail")
 
+## STEP 18: Add permissions for search
+
+To have permissions to search in any repository we must add the permission called **nx-search-read** to the role **gsdpi-developer** like this:
+
+![Nexus Search Role](./images/nexus-search-role.png "Nexus Search Role")
+
+## STEP 19: Bonus: remove the alarm from nexus
+
+Existe an alarm related with some default secret keys that you must update after installation
+![Nexus Status](./images/nexus-alarms.png "Nexus Status")
+
+Generate a new custom secret key:
+```
+$ openssl rand -base64 32
+9Ibw95OCc1kRvEF9VggV4J8wb7/xakKGcHBi3PhOBcU=
+```
+
+Download the default nexus configuration file **nexus.properties** from container:
+```
+$ docker cp gsdpi-nexus:/nexus-data/etc/nexus.properties ./
+```
+
+Set the previous secret key value like in this file:
+```
+# Jetty section
+# application-port=8081
+# application-host=0.0.0.0
+# nexus-args=${jetty.etc}/jetty.xml,${jetty.etc}/jetty-http.xml,${jetty.etc}/jetty-requestlog.xml
+# nexus-context-path=/${NEXUS_CONTEXT}
+
+# Nexus section
+# nexus-edition=nexus-pro-edition
+# nexus-features=\
+#  nexus-pro-feature
+
+nexus.security.secretKey=9Ibw95OCc1kRvEF9VggV4J8wb7/xakKGcHBi3PhOBcU=
+```
+
+Upload again the configiration to nexus container
+```
+$ docker cp ./nexus.properties gsdpi-nexus:/nexus-data/etc/nexus.properties
+```
+
+Restart nexus the alarm must dispared
+
 ## Links
 
 - [Official Nexus Docker Repository](https://hub.docker.com/r/sonatype/nexus3/)
