@@ -258,7 +258,7 @@ To have permissions to search in any repository we must add the permission calle
 
 ![Nexus Search Role](./images/nexus-search-role.png "Nexus Search Role")
 
-## STEP 19 Bonus: remove the alarm from nexus
+## STEP 19 Bonus: remove some alarms from nexus
 
 Existe an alarm related with some default secret keys that you must update after installation
 ![Nexus Status](./images/nexus-alarms.png "Nexus Status")
