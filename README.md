@@ -258,7 +258,7 @@ To have permissions to search in any repository we must add the permission calle
 
 ![Nexus Search Role](./images/nexus-search-role.png "Nexus Search Role")
 
-## STEP 19: Bonus: remove the alarm from nexus
+## STEP 19 Bonus: remove the alarm from nexus
 
 Existe an alarm related with some default secret keys that you must update after installation
 ![Nexus Status](./images/nexus-alarms.png "Nexus Status")
@@ -296,6 +296,22 @@ $ docker cp ./nexus.properties gsdpi-nexus:/nexus-data/etc/nexus.properties
 ```
 
 Restart nexus the alarm must dispared
+
+
+## STEP 20 Bonus: set a custom path for nexus
+
+If we are gling to start nexus behinds a proxy like HAProxy, we must to configure a particular path for example **/nexus**. To to that we must edit the
+file **nexus.properties** located in **/nexus-data/etc/** and set this key/value inside:
+
+```
+nexus-context-path=/nexus
+```
+
+Restart nexus the alarm must dispared. Now to access the portal will be:
+
+```
+http://localhost:8081/nexus
+```
 
 ## Links
 
