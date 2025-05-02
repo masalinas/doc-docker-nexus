@@ -95,6 +95,11 @@ $ sudo nano /etc/docker/daemon.json
 }
 ```
 
+You must restart docker daemon to reconfigure the service like this:
+
+```
+$ sudo systemctl restart docker
+```
 This operation must be execute in all computers in our network where you want access to nexus from http
 
 ## STEP 07: creare a rol and user to access to docker nexus repository
